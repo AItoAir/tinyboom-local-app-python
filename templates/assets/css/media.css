@@ -1,0 +1,31 @@
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 975px) {
+  html,body{
+    font-size: small;
+  }
+  
+  img {
+    width: 100%;
+  }
+
+  .body-container {
+      grid-template-areas:
+          "left"
+          "right"
+          "bottom";
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+  }
+
+  #mainLeft,
+  #mainRight,
+  #mainBottom{
+    grid-area: span 1;  
+    border-radius: 1rem;
+  }
+
+  .button-container{
+    width: 100%;
+  }
+}

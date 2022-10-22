@@ -1,0 +1,44 @@
+<!-- index.html -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tinyboom Local app</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- vendor css files -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('templates', path='/assets/css/vendor/bootstrap/css/bootstrap.min.css') }}" media="screen" />
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('templates', path='/assets/css/vendor/bootstrap-icons/bootstrap-icons.css') }}" media="screen" />
+
+  <!-- main css file -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('templates', path='/assets/css/fonts.css') }}"
+    media="screen" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('templates', path='/assets/css/inputs.css') }}"
+    media="screen" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('templates', path='/assets/css/modal.css') }}"
+    media="screen" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('templates', path='/assets/css/style.css') }}"
+    media="screen" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('templates', path='/assets/css/media.css') }}"
+    media="screen" />
+</head>
+
+<body>
+  <div class="body-container">
+    <section id="mainLeft">
+      <div>
+        <h1>Camera streaming data with detection</h1>
+        <div class="image-container pt-3">
+          <img src="{{ url_for('video_feed') }}">
+        </div>
+      </div>
+    </section>
+
+</body>
+
+</html>
