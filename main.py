@@ -16,9 +16,8 @@ from fastapi.templating import Jinja2Templates
 
 from config import tbm_setting, frame_setting
 from frame_handler.frame_generator import FrameGenerator
-from utility.util_functions import draw_detection_in_frame, \
-                                   get_inference_from_tbm, \
-                                   load_tbm, tbm_input_msg
+from utility.tbm_communicator import TBMCommunicator
+from utility.util_functions import draw_detection_in_frame
 
 app = FastAPI()
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
@@ -28,9 +27,10 @@ templates = Jinja2Templates(directory="templates")
 async def index(request: Request):
    return templates.TemplateResponse('index.html', {"request": request})
 
-socket_client = load_tbm(tbm_setting.tbm_path, tbm_setting.dll_directory)
 def gen(camera):
     """Video streaming generator function."""
+    tbm_communicator = TBMCommunicator(tbm_setting.tbm_path, tbm_setting.dll_directory)
+    tbm_socket_client = tbm_communicator.get_socket_client()
     while True:
         frame_arr = camera.get_frame_as_arr()
         retval, buffer = cv2.imencode('.jpg', frame_arr)
@@ -38,16 +38,15 @@ def gen(camera):
         # frame arr to base64 encode
         frame_as_base64 = base64.b64encode(buffer)
         frame_as_base64_str = frame_as_base64.decode('utf-8') # base64 as string
-        tbm_input = tbm_input_msg(frame_as_base64_str)
-        det_result = get_inference_from_tbm(
-            socket_client,
-            tbm_setting.tbm_path,
-            tbm_setting.dll_directory,
-            tbm_input
-        )
-        frame_arr = draw_detection_in_frame(frame_arr, det_result)
-        frame_arr = camera.resize_frame(frame_arr, frame_setting.height)
-        _, jpeg = cv2.imencode(camera.img_ext, frame_arr)
+
+        tbm_input = \
+            tbm_communicator.get_tbm_socket_input_msg(frame_as_base64_str)
+        raw_det_result = \
+            tbm_communicator.get_streaming_inference_thru_tbm(tbm_socket_client, tbm_input)
+
+        frame_arr_with_bbox = draw_detection_in_frame(frame_arr, raw_det_result)
+        frame_arr_with_bbox = camera.resize_frame(frame_arr_with_bbox, frame_setting.height)
+        _, jpeg = cv2.imencode(camera.img_ext, frame_arr_with_bbox)
         frame_byte = jpeg.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame_byte + b'\r\n')
