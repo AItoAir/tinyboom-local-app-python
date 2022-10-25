@@ -1,15 +1,4 @@
 @font-face {
-  font-family: 'Sawarabi Gothic';
-  src: url('../fonts/SawarabiGothic/SawarabiGothic-Regular.eot');
-  src: url('../fonts/SawarabiGothic/SawarabiGothic-Regular.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/SawarabiGothic/SawarabiGothic-Regular.woff2') format('woff2'),
-      url('../fonts/SawarabiGothic/SawarabiGothic-Regular.woff') format('woff'),
-      url('../fonts/SawarabiGothic/SawarabiGothic-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Noto Sans JP';
   src: url('../fonts/NotoSansJP/NotoSansJP-Light.otf') format('opentype');
   font-weight: 300;
@@ -49,4 +38,19 @@
   src: url('../fonts/NotoSansJP/NotoSansJP-Thin.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Contrail One';
+  src: url('ContrailOne-Regular.eot');
+  src: url('ContrailOne-Regular.eot?#iefix') format('embedded-opentype'),
+      url('ContrailOne-Regular.woff2') format('woff2'),
+      url('ContrailOne-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.contrail {
+  font-family: 'Contrail One';
 }
