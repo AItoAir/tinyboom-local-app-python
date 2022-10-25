@@ -39,6 +39,12 @@ Traceback (most recent call last):
     return _bootstrap._gcd_import(name[level:], package, level)
 ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 ```
+<br>
+
+## Known limitation
+- Currently only object detection model is supported.
+
+<br>
 
 ## LICENSE
 This project is licensed under the terms of the Apache License 2.0. Please see the LICENSE file for details.<br>
