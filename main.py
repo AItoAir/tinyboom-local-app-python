@@ -1,8 +1,6 @@
 """ This script is to run fastapi server using Tinyboom models.
 
-author Jeong Doowon
-date Jul/28/2022
-Copyright (c) 2022 AItoAir. All rights reserved.
+Copyright (c) 2022 AItoAir
 """
 import argparse
 import uvicorn
