@@ -1,8 +1,6 @@
 """ This script is for base module for camera handlers.
 
-author Jeong Doowon
-date Aug/4/2022
-Copyright (c) 2022 AItoAir. All rights reserved.
+Copyright (c) 2022 AItoAir
 """
 import cv2
 import time

@@ -4,7 +4,7 @@ This module is to use socket communication with TBM.
 
 author Jeong
 date Oct/24/2022
-Copyright (c) 2022 AItoAir. All rights reserved.
+Copyright (c) 2022 AItoAir
 '''
 import base64
 import json

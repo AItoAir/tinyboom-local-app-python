@@ -1,8 +1,6 @@
 """ This script has util functions to run tbm application.
 
-author Jeong Doowon
-date Oct/22/2022
-Copyright (c) 2022 AItoAir. All rights reserved.
+Copyright (c) 2022 AItoAir
 """
 import cv2
 import json

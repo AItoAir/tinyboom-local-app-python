@@ -1,8 +1,6 @@
 """ This script is to create frame from webcam.
 
-author Jeong Doowon
-date Oct/22/2022
-Copyright (c) 2022 AItoAir. All rights reserved.
+Copyright (c) 2022 AItoAir
 """
 import sys
 import cv2
